@@ -7,47 +7,49 @@
     <title>Proyecto js</title>
 
     <link rel="stylesheet" href="./css/style.css">
-    
-    <script src="/js/s.js"></script>
+
+    <script src="./js/index.js"></script>
 </head>
 
 <body>
 
-    <div id="Calculadora">
 
-        <input type="text" id="display" disabled>
-        <br>
-        <button id="ac" class="operator">AC</button>
-        <button id="de" class="operator">DE</button>
-        <button id="." class="operator">.</button>
-        <button id="/" class="operator">/</button>
-        <br>
-        <button id="7">7</button>
-        <button id="8">8</button>
-        <button id="9">9</button>
-        <button id="*" class="operator">*</button>
-        <br />
-        <button id="4">4</button>
-        <button id="5">5</button>
-        <button id="6">6</button>
-        <button id="-" class="operator">-</button>
-        <br>
-        <button id="1">1</button>
-        <button id="2">2</button>
-        <button id="3">3</button>
-        <button id="+" class="operator">+</button>
-        <br>
-        <button id="00">00</button>
-        <button id="0">0</button>
-        <button id="=" class="equal operator">=</button>
-
-
-
+    <h1> Venta de entradas online</h1>
+    <div class="container">
+        <div>
+            <h2>Entrada general</h2>
+            <!--<button onclick="vender_entrada()">-</button>
+             <span> 0</span>-->
+            <button onclick="comprarGeneral()">+</button>
+    
+    
+        </div>
+    
+        <div>
+            <h2>Vip Escenario</h2>
+            <!--<button>-</button>
+             <span> 0</span>-->
+            <button onclick="comprarVip()">+</button>
+    
+    
+        </div>
+    
+        <div>
+            <h2>Entrada mas consumicion</h2>
+            <!--<button>-</button>
+             <span> 0</span>-->
+            <button onclick="comprarcons()">+</button>
+    
+    
+        </div>
+    
+        <div>
+            <button onclick="mostrar_carrito()">Comprar</button>
+        </div>
+    
     </div>
 
 
-    <script src="/js/index.js"></script>
-    <script src="/js/s.js"></script>
 
 
 </body>
