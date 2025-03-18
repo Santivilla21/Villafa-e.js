@@ -1,5 +1,41 @@
+body{
+    background-color: rgb(70, 1, 160);
+}
+h1{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: aliceblue;
+    
+
+}
+h2{
+    color: aliceblue;
+}
+.cajas{
+    border:violet solid 4px;
+    justify-items: center;
+    background-color: blueviolet;
+}
+#caja{
+    border:violet solid 4px;
+    justify-self: center;
+    background-color: blueviolet;
+}
+
 .container{
     display: grid;
     grid-template-rows: 4;
     gap: 30px;
+    justify-content: center;
+    background-color: rgb(55, 0, 255);
 }
+button {
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.1s, transform 0.2s;
+    background-color: white;
+}
+
+button:active { /* Corrigiendo la sintaxis de la pseudo-clase */
+    background-color: blue;
+    transform: scale(0.98); }
