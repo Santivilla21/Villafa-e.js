@@ -1,34 +1,39 @@
-body{
+body {
     background-color: rgb(70, 1, 160);
 }
-h1{
+
+h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     background-color: aliceblue;
-    
+
 
 }
-h2{
+
+h2 {
     color: aliceblue;
 }
-.cajas{
-    border:violet solid 4px;
+
+.cajas {
+    border: violet solid 4px;
     justify-items: center;
     background-color: blueviolet;
 }
-#caja{
-    border:violet solid 4px;
+
+#caja {
+    border: violet solid 4px;
     justify-self: center;
     background-color: blueviolet;
 }
 
-.container{
+.container {
     display: grid;
     grid-template-rows: 4;
     gap: 30px;
     justify-content: center;
     background-color: rgb(55, 0, 255);
 }
+
 button {
     cursor: pointer;
     border: none;
@@ -36,6 +41,16 @@ button {
     background-color: white;
 }
 
-button:active { /* Corrigiendo la sintaxis de la pseudo-clase */
+button:active {
     background-color: blue;
-    transform: scale(0.98); }
+    transform: scale(0.98);
+}
+
+span {
+    color: aliceblue;
+}
+
+.card{
+   justify-content: center;
+   background-color: red;
+}

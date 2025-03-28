@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
 
-    <script src="./js/index.js"></script>
+    
 </head>
 
 <body>
@@ -18,27 +18,27 @@
     <div class="container">
         <div class="cajas">
             <h2>Entrada general</h2>
-            <button  onclick="vender_1()">-</button>
-             <span> 0</span>
-            <button onclick="comprar_general()">+</button>
+            <button id="boton_menos_general">-</button>
+             <span id="contador1"> 0</span>
+            <button id="boton_mas_general">+</button>
     
     
         </div>
     
         <div class="cajas"> 
             <h2>Vip Escenario</h2>
-            <button  onclick="vender_2()">-</button>
-             <span> 0</span>
-            <button id="agregarVip">+</button>
+            <button  id="boton_menos_vip">-</button>
+             <span id="contador2"> 0</span>
+            <button id="boton_mas_vip">+</button>
     
     
         </div>
     
         <div class="cajas">
             <h2>Entrada mas consumicion</h2>
-            <button  onclick="vender_3()">-</button>
-             <span> 0</span>
-            <button onclick="comprar_cons()">+</button>
+            <button id="boton_menos_cons">-</button>
+             <span id="contador3"> 0</span>
+            <button id="boton_mas_cons">+</button>
     
     
         </div>
@@ -48,10 +48,11 @@
         </div>
     
     </div>
+ <a href="/secciones/compra.html">Ir a pagar</a>
 
 
 
-
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
