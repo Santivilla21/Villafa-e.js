@@ -17,6 +17,47 @@ const carritoCompras = [];
 let dinero = [];
 let sumatotal = 0;
 
+//localstorage 
+window.addEventListener("load", () => {
+  const carritoGuardado = JSON.parse(localStorage.getItem("carritoCompras"));
+  const dineroGuardado = JSON.parse(localStorage.getItem("dinero"));
+  const sumatotalGuardado = localStorage.getItem("sumatotal");
+  
+  if (carritoGuardado) {
+    carritoCompras.push(...carritoGuardado);
+  }
+
+  if (dineroGuardado) {
+    dinero.push(...dineroGuardado);
+  }
+
+  if (sumatotalGuardado) {
+    sumatotal = parseFloat(sumatotalGuardado);
+  }
+
+  // Si hay datos guardados, actualizar la UI
+  actualizarContadores();
+  mostrarTotal();
+});
+
+// Función para actualizar los contadores en la UI
+function actualizarContadores() {
+  document.getElementById("contador1").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada General").length;
+  document.getElementById("contador2").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada Vip").length;
+  document.getElementById("contador3").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada con Consumicion").length;
+}
+
+// Función para mostrar el total en la UI
+function mostrarTotal() {
+  console.log("Total: $" + sumatotal);
+}
+
+// Función para guardar los datos en localStorage
+function guardarEnLocalStorage() {
+  localStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
+  localStorage.setItem("dinero", JSON.stringify(dinero));
+  localStorage.setItem("sumatotal", sumatotal.toString());
+}
 
 //entrada 1----------------------------------------------------
 
@@ -38,7 +79,7 @@ agregar_general.addEventListener("click", () => {
     contadorA = isNaN(valorActual) ? 0 : valorActual;
     contadorA++;
     contadorElemento.innerHTML = contadorA;
-
+    guardarEnLocalStorage();
     return;
   }
 });
@@ -67,7 +108,7 @@ vender_1.addEventListener("click", () => {
         contadorA = isNaN(valorActual) ? 0 : valorActual;
         contadorA--;
         contadorElemento.innerHTML = contadorA;
-
+        guardarEnLocalStorage();
         return;
       }
     }
@@ -96,7 +137,7 @@ agregar_vip.addEventListener("click", () => {
   contadorB = isNaN(valorActual) ? 0 : valorActual;
   contadorB += 1;
   contadorElemento.innerHTML = contadorB;
-
+  guardarEnLocalStorage();
   return;
 })
 
@@ -126,7 +167,7 @@ vender_2.addEventListener("click", () => {
         contadorB = isNaN(valorActual) ? 0 : valorActual;
         contadorB--;
         contadorElemento.innerHTML = contadorB;
-
+        guardarEnLocalStorage();
         return;
       }
     }
@@ -151,7 +192,7 @@ agregar_cons.addEventListener("click", () => {
     contadorC = isNaN(valorActual) ? 0 : valorActual;
     contadorC += 1;
     contadorElemento.innerHTML = contadorC;
-
+    guardarEnLocalStorage();
     return;
   }
 
@@ -181,30 +222,33 @@ vender_3.addEventListener("click", () => {
         let valorActual = parseInt(contadorElemento.innerHTML);
 
         contadorC = isNaN(valorActual) ? 0 : valorActual;
-        contadorC --;
+        contadorC--;
         contadorElemento.innerHTML = contadorC;
-
+        guardarEnLocalStorage();
         return;
       }
     }
   }
 });
 //carrito
-function mostrar_carrito() {
+
+const mostrar_carrito = document.getElementById("mostrar_carrito")
+mostrar_carrito.addEventListener("click", () => {
   console.log("Tu carrito:");
-  // for (let i = 0; i < carritoCompras.length; i++) {
-  //  console.log(carritoCompras[i].nombre + " - $" + carritoCompras[i].precio);
-  //}
+
   carritoCompras.forEach((entrada) => {
     console.log(entrada.nombre + " $ " + entrada.precio)
   })
   console.log("Total: $" + sumatotal);
-
-  let montoAPagar = prompt("Ingrese el monto a pagar:");
+  guardarEnLocalStorage();
+  /* let montoAPagar = prompt("Ingrese el monto a pagar:");
   if (parseFloat(montoAPagar) === sumatotal) {
     alert("Compra realizada");
   } else {
     alert("Monto incorrecto. La compra no se realizó.");
-  }
+  } */
 }
-
+)
+const total_a_pagar = document.getElementById("resumen_pago")
+total_a_pagar.innerText=
+'<h2>Resumen </h2>';

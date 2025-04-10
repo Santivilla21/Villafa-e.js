@@ -1,0 +1,43 @@
+body{
+    justify-content: center;
+    display: flex;
+    background: linear-gradient(blueviolet , blue, rgba(160, 13, 13, 0.733));
+}
+.card{
+    max-height: 80%;
+    width: 40% ;
+    justify-items: center;
+}
+
+#formulario_estilo form{
+    display: inline-block;
+    justify-items: center; 
+    gap: 2px;
+    
+
+}
+#formulario_estilo input{
+    border-bottom: 3px solid violet;
+    
+}
+.card h1{
+    background-color: black;
+    color: violet;
+    border: 1px solid violet;
+    text-align: center;
+}
+.card h2{
+    color: black;
+    border: 2px solid black ;
+    border-width: 100%;
+    text-align: center;
+}
+.labels{
+    width: 100%;
+    text-align: end;
+
+}
+#finish button{
+    width: 50px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}

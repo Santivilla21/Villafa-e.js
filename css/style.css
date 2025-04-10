@@ -1,19 +1,68 @@
+
 body {
     background-color: rgb(70, 1, 160);
+    margin: 0%;
+    padding: 0%;
 }
+header{
+    background-color: rgb(86, 13, 202);
+    display: flex ;
+    gap: 2px;
+    padding-top: 5px;
 
-h1 {
+}
+header h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-    background-color: aliceblue;
-
-
+    text-align:left;
+    position: relative;
+    color:aliceblue ;
+    
+}
+header img {
+    border-radius: 50%;
+    width: 4%;
+    height: 4%;
+}
+section#frente {
+    position: relative; 
+    width: 100vw;
+    height: 100vh; 
 }
 
+#imagen_barra {
+    position: absolute;
+    width: 100vw;
+    height: 100vh; 
+    
+    z-index: 1; 
+}
+#imagen_barra img{
+    width: 100vw;
+    height: 100vh; 
+}
+#redireccion {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 2; 
+    text-align: center;
+    border: 2px solid white;
+}
+
+#redireccion a {
+    font-size: 24px;
+    color: white; 
+    text-decoration: none;
+}
 h2 {
     color: aliceblue;
 }
-
+h3{
+    color:wheat ;
+font-family:Georgia, 'Times New Roman', Times, serif;
+font-size: 20px;
+text-align: center;}
 .cajas {
     border: violet solid 4px;
     justify-items: center;
@@ -32,6 +81,11 @@ h2 {
     gap: 30px;
     justify-content: center;
     background-color: rgb(55, 0, 255);
+    z-index: 1;
+    position: relative;
+    padding: 10px;
+    margin: 10px;
+    
 }
 
 button {

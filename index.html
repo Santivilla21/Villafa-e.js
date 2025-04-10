@@ -8,47 +8,62 @@
 
     <link rel="stylesheet" href="./css/style.css">
 
-    
+
 </head>
 
 <body>
+    <header>
+
+        <h1> Online Tickects</h1>
+        <img src="./imagenes/ticket-logo.jpg" alt="logo">
+
+    </header>
+    <main>
+        <section id="frente">
+            <div id="imagen_barra"><img src="./imagenes/barra.avif" alt=""></div>
+            <div id="redireccion"><a href="#titular">Ir a comprar ⬇⬇⬇</a></div>
+        </section>
 
 
-    <h1> Venta de entradas online</h1>
-    <div class="container">
-        <div class="cajas">
-            <h2>Entrada general</h2>
-            <button id="boton_menos_general">-</button>
-             <span id="contador1"> 0</span>
-            <button id="boton_mas_general">+</button>
-    
-    
+        <div class="container">
+            <div id="titular">
+                <h3>Elige la Cantidad</h3>
+            </div>
+            <div class="cajas">
+                <h2>Entrada general</h2>
+                <button id="boton_menos_general">-</button>
+                <span id="contador1"> 0</span>
+                <button id="boton_mas_general">+</button>
+
+
+            </div>
+
+            <div class="cajas">
+                <h2>Vip Escenario</h2>
+                <button id="boton_menos_vip">-</button>
+                <span id="contador2"> 0</span>
+                <button id="boton_mas_vip">+</button>
+
+
+            </div>
+
+            <div class="cajas">
+                <h2>Entrada mas consumicion</h2>
+                <button id="boton_menos_cons">-</button>
+                <span id="contador3"> 0</span>
+                <button id="boton_mas_cons">+</button>
+
+
+            </div>
+
+            <div id="caja">
+                <button id="mostrar_carrito"><a href="./secciones/compra.html">Comprar</a></button>
+            </div>
+
         </div>
-    
-        <div class="cajas"> 
-            <h2>Vip Escenario</h2>
-            <button  id="boton_menos_vip">-</button>
-             <span id="contador2"> 0</span>
-            <button id="boton_mas_vip">+</button>
-    
-    
-        </div>
-    
-        <div class="cajas">
-            <h2>Entrada mas consumicion</h2>
-            <button id="boton_menos_cons">-</button>
-             <span id="contador3"> 0</span>
-            <button id="boton_mas_cons">+</button>
-    
-    
-        </div>
-    
-        <div id="caja">
-            <button onclick="mostrar_carrito()">Comprar</button>
-        </div>
-    
-    </div>
- <a href="/secciones/compra.html">Ir a pagar</a>
+ 
+    </main>
+
 
 
 
