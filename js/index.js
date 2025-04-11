@@ -35,24 +35,24 @@ window.addEventListener("load", () => {
     sumatotal = parseFloat(sumatotalGuardado);
   }
 
-  // Si hay datos guardados, actualizar la UI
+  
   actualizarContadores();
   mostrarTotal();
 });
 
-// Función para actualizar los contadores en la UI
+
 function actualizarContadores() {
   document.getElementById("contador1").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada General").length;
   document.getElementById("contador2").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada Vip").length;
   document.getElementById("contador3").innerHTML = carritoCompras.filter(item => item.nombre === "Entrada con Consumicion").length;
 }
 
-// Función para mostrar el total en la UI
+
 function mostrarTotal() {
   console.log("Total: $" + sumatotal);
 }
 
-// Función para guardar los datos en localStorage
+
 function guardarEnLocalStorage() {
   localStorage.setItem("carritoCompras", JSON.stringify(carritoCompras));
   localStorage.setItem("dinero", JSON.stringify(dinero));
@@ -239,8 +239,8 @@ mostrar_carrito.addEventListener("click", () => {
   carritoCompras.forEach((entrada) => {
     console.log(entrada.nombre + " $ " + entrada.precio)
   })
-  console.log("Total: $" + sumatotal);
-  guardarEnLocalStorage();
+  document.getElementById('resumen_pago').textContent=('Total a pagar $'+sumatotal)
+  
   /* let montoAPagar = prompt("Ingrese el monto a pagar:");
   if (parseFloat(montoAPagar) === sumatotal) {
     alert("Compra realizada");
@@ -249,6 +249,11 @@ mostrar_carrito.addEventListener("click", () => {
   } */
 }
 )
-const total_a_pagar = document.getElementById("resumen_pago")
-total_a_pagar.innerText=
-'<h2>Resumen </h2>';
+document.getElementById("mostrar_carrito").addEventListener("click", function () {
+  const card = document.getElementById("card");
+  if (card.style.display === "none" || card.style.display === "") {
+    card.style.display = "block";
+  } else {
+    card.style.display = "none";
+  }
+});

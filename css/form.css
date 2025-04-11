@@ -1,43 +1,64 @@
-body{
-    justify-content: center;
-    display: flex;
-    background: linear-gradient(blueviolet , blue, rgba(160, 13, 13, 0.733));
-}
-.card{
-    max-height: 80%;
-    width: 40% ;
-    justify-items: center;
-}
+#card {
 
-#formulario_estilo form{
+    
+    position: fixed;         /* Ocupa toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    color: white;
     display: inline-block;
-    justify-items: center; 
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: none;
+    z-index: 9999;  
+}
+
+#formulario_estilo form {
+    display: inline-block;
+    justify-items: center;
     gap: 2px;
-    
+
 
 }
-#formulario_estilo input{
+
+#formulario_estilo input {
     border-bottom: 3px solid violet;
-    
+
 }
-.card h1{
+
+#card h1 {
     background-color: black;
     color: violet;
     border: 1px solid violet;
     text-align: center;
 }
-.card h2{
-    color: black;
-    border: 2px solid black ;
+#card h2{
+    color: violet;
+    border: 2px solid violet;
     border-width: 100%;
     text-align: center;
 }
-.labels{
+#card h3 {
+    color: violet;
+    border: 2px solid violet;
+    border-width: 100%;
+    text-align: center;
+}
+
+.labels {
     width: 100%;
     text-align: end;
 
 }
-#finish button{
+
+#finish button {
     width: 50px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+#formulario_estilo {
+    background-color:black;
 }

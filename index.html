@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto js</title>
-
+    <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./css/style.css">
 
 
@@ -23,6 +23,64 @@
             <div id="imagen_barra"><img src="./imagenes/barra.avif" alt=""></div>
             <div id="redireccion"><a href="#titular">Ir a comprar ⬇⬇⬇</a></div>
         </section>
+        <div id="card">
+            <div>
+                <h1>Resumen de Compra</h1>
+            </div>
+            <div id="formulario_estilo">
+                <form action="https://formspree.io/f/xblgqgyg" method="POST"><!-- Aca uso una appi para que me lleguen los formularios a mi mail -->
+                    <div class="labels">
+
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required placeholder="Introduce tu email">
+                        <br><br>
+                    </div>
+
+                    <div class="labels">
+
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Introduce tu nombre">
+                        <br><br>
+                    </div>
+                    <div class="labels">
+
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" required placeholder="Introduce tu apellido">
+                        <br><br>
+                    </div>
+
+                    <div class="labels">
+
+                        <label for="dni">DNI:</label>
+                        <input id="dni" name="dni" required placeholder="Introduce tu DNI">
+                        <br><br>
+                    </div>
+
+                    <div class="labels">
+
+                        <label for="telefono">Número de Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="Introduce tu teléfono"
+                            title="Número de teléfono">
+                        <br><br>
+                    </div>
+                    <div class="labels">
+                        <h2 id="resumen_pago">Alias: roberto.mp total:</h2>
+                        <h3>Trasnferir al siguiente Alias: "online.tickets.villa" </h3>
+
+                    </div>
+                    <div class="labels">
+                        <label for="imagen">Subir comprobante :</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*">
+                        <br><br>
+                    </div>
+                    <div id="finish">
+
+                        <button type="submit">Pagar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
 
 
         <div class="container">
@@ -57,12 +115,13 @@
             </div>
 
             <div id="caja">
-                <button id="mostrar_carrito"><a href="./secciones/compra.html">Comprar</a></button>
+                <button id="mostrar_carrito">Comprar</a></button>
             </div>
 
         </div>
- 
+        <!-- formulario -->
     </main>
+
 
 
 
