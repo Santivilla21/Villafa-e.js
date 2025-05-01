@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nombre": "Entrada General",
+        "precio": 8000,
+        "stock": 200
+    },
+    
+    {
+        "id": 2,
+        "nombre": "Entrada Vip",
+        "precio": 15000,
+        "stock": 50
+    },
+    
+    {
+        "id": 3,
+        "nombre": "Entrada con Consumicion",
+        "precio": 12000,
+        "stock": 100
+    }
+]

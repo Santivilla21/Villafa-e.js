@@ -8,10 +8,10 @@ class Entrada {
 }
 
 //objeos/entradas
-const entrada_general = new Entrada(1, "Entrada General", 8000, 200);
+/* const entrada_general = new Entrada(1, "Entrada General", 8000, 200);
 const entrada_vip = new Entrada(2, "Entrada Vip", 15000, 50);
 const entrada_consumision = new Entrada(3, "Entrada con Consumicion", 12000, 100);
-
+ */
 const carritoCompras = [];
 
 let dinero = [];
@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
   const carritoGuardado = JSON.parse(localStorage.getItem("carritoCompras"));
   const dineroGuardado = JSON.parse(localStorage.getItem("dinero"));
   const sumatotalGuardado = localStorage.getItem("sumatotal");
-  
+
   if (carritoGuardado) {
     carritoCompras.push(...carritoGuardado);
   }
@@ -35,7 +35,7 @@ window.addEventListener("load", () => {
     sumatotal = parseFloat(sumatotalGuardado);
   }
 
-  
+
   actualizarContadores();
   mostrarTotal();
 });
@@ -59,58 +59,63 @@ function guardarEnLocalStorage() {
   localStorage.setItem("sumatotal", sumatotal.toString());
 }
 
+async function obtenerEntradaPorId(id) {
+  try {
+    const res = await fetch("entrada.json");
+    if (!res.ok) throw new Error("Error al cargar JSON");
+    const items = await res.json();
+    const encontrado = items.find(item => item.id === id);
+    if (!encontrado) throw new Error("No se encontró el item con id: " + id);
+    return new Entrada(encontrado.id, encontrado.nombre, encontrado.precio, encontrado.stock);
+  } catch (err) {
+    console.error(err);
+  }
+}
 //entrada 1----------------------------------------------------
-
 let contadorA = 0
 
 const agregar_general = document.getElementById("boton_mas_general");
-agregar_general.addEventListener("click", () => {
-  const entrada = entrada_general;
+agregar_general.addEventListener("click", async () => {
+  const entrada = await obtenerEntradaPorId(1);
 
-  if (entrada instanceof Entrada) {//logica por consola
+  if (entrada instanceof Entrada) {
     carritoCompras.push(entrada);
     dinero.push(entrada.precio);
     sumatotal += entrada.precio;
     console.log("  $" + entrada.precio);
 
-    //logica en el contador
     let contadorElemento = document.getElementById("contador1");
     let valorActual = parseInt(contadorElemento.innerHTML);
     contadorA = isNaN(valorActual) ? 0 : valorActual;
     contadorA++;
     contadorElemento.innerHTML = contadorA;
+
     guardarEnLocalStorage();
-    return;
   }
 });
 
-const vender_1 = document.getElementById("boton_menos_general");
-vender_1.addEventListener("click", () => {
-  const entrada = entrada_general;
+const vender_general = document.getElementById("boton_menos_general");
+vender_general.addEventListener("click", async () => {
+  const entrada = await obtenerEntradaPorId(1);
 
-  let item_a_vender1_encontrado = carritoCompras.find((item) => item.nombre === entrada.nombre);
+  if (entrada instanceof Entrada) {
+    const index = carritoCompras.findIndex(item => item.id === entrada.id);
 
-  if (item_a_vender1_encontrado) {
-    for (let i = 0; i < carritoCompras.length; i++) {
-      if (carritoCompras[i].nombre === entrada.nombre) {
+    if (index !== -1) {
+      sumatotal -= carritoCompras[index].precio;
+      carritoCompras.splice(index, 1);
+      dinero.splice(index, 1);
 
-        sumatotal -= carritoCompras[i].precio;
+      console.log("-1 " + entrada.nombre + "!");
 
+      let contadorElemento = document.getElementById("contador1");
+      let valorActual = parseInt(contadorElemento.innerHTML);
 
-        carritoCompras.splice(i, 1);
+      contadorA = isNaN(valorActual) ? 0 : valorActual;
+      contadorA--;
+      contadorElemento.innerHTML = contadorA;
 
-        console.log("-1 " + entrada.nombre + "!");
-
-
-        let contadorElemento = document.getElementById("contador1");
-        let valorActual = parseInt(contadorElemento.innerHTML);
-
-        contadorA = isNaN(valorActual) ? 0 : valorActual;
-        contadorA--;
-        contadorElemento.innerHTML = contadorA;
-        guardarEnLocalStorage();
-        return;
-      }
+      guardarEnLocalStorage();
     }
   }
 });
@@ -123,72 +128,68 @@ vender_1.addEventListener("click", () => {
 let contadorB = 0
 
 const agregar_vip = document.getElementById("boton_mas_vip");
-agregar_vip.addEventListener("click", () => {
-  const entrada = entrada_vip
-
+agregar_vip.addEventListener("click",async () => {
+  const entrada = await obtenerEntradaPorId(2)
+  
   if (entrada instanceof Entrada)
     carritoCompras.push(entrada);
   dinero.push(entrada.precio);
   sumatotal += entrada.precio;
   console.log("  $" + entrada.precio);
+  
   let contadorElemento = document.getElementById("contador2");
   let valorActual = parseInt(contadorElemento.innerHTML);
-
   contadorB = isNaN(valorActual) ? 0 : valorActual;
   contadorB += 1;
   contadorElemento.innerHTML = contadorB;
+  
   guardarEnLocalStorage();
-  return;
+  
 })
 
 
 
-const vender_2 = document.getElementById("boton_menos_vip");
-vender_2.addEventListener("click", () => {
-  const entrada = entrada_vip;
+const vender_vip = document.getElementById("boton_menos_vip");
+vender_vip.addEventListener("click", async () => {
+  const entrada = await obtenerEntradaPorId(2); // Entrada VIP
 
-  let item_a_vender2_encontrado = carritoCompras.find((item) => item.nombre === entrada.nombre);
+  if (entrada instanceof Entrada) {
+    const index = carritoCompras.findIndex(item => item.id === entrada.id);
 
-  if (item_a_vender2_encontrado) {
-    for (let i = 0; i < carritoCompras.length; i++) {
-      if (carritoCompras[i].nombre === entrada.nombre) {
+    if (index !== -1) {
+      sumatotal -= carritoCompras[index].precio;
+      carritoCompras.splice(index, 1);
+      dinero.splice(index, 1); // opcional, si usás el array dinero
 
-        sumatotal -= carritoCompras[i].precio;
+      console.log("-1 " + entrada.nombre + "!");
 
+      let contadorElemento = document.getElementById("contador2");
+      let valorActual = parseInt(contadorElemento.innerHTML);
 
-        carritoCompras.splice(i, 1);
+      contadorB = isNaN(valorActual) ? 0 : valorActual;
+      contadorB--;
+      contadorElemento.innerHTML = contadorB;
 
-        console.log("-1 " + entrada.nombre + "!");
-
-
-        let contadorElemento = document.getElementById("contador2");
-        let valorActual = parseInt(contadorElemento.innerHTML);
-
-        contadorB = isNaN(valorActual) ? 0 : valorActual;
-        contadorB--;
-        contadorElemento.innerHTML = contadorB;
-        guardarEnLocalStorage();
-        return;
-      }
-    }
+      guardarEnLocalStorage();
+    } 
   }
 });
 
 //entrada 3-------------------------------------------------------
 let contadorC = 0
 const agregar_cons = document.getElementById("boton_mas_cons")
-agregar_cons.addEventListener("click", () => {
-  const entrada = entrada_consumision
-
+agregar_cons.addEventListener("click",async () => {
+  const entrada = await obtenerEntradaPorId(3)
+  
 
   if (entrada instanceof Entrada) {
     carritoCompras.push(entrada);
     dinero.push(entrada.precio);
     sumatotal += entrada.precio;
     console.log("  $" + entrada.precio);
+    
     let contadorElemento = document.getElementById("contador3");
     let valorActual = parseInt(contadorElemento.innerHTML);
-
     contadorC = isNaN(valorActual) ? 0 : valorActual;
     contadorC += 1;
     contadorElemento.innerHTML = contadorC;
@@ -200,34 +201,29 @@ agregar_cons.addEventListener("click", () => {
 })
 
 
-const vender_3 = document.getElementById("boton_menos_cons");
-vender_3.addEventListener("click", () => {
-  const entrada = entrada_consumision;
+const vender_consumision = document.getElementById("boton_menos_cons");
+vender_consumision.addEventListener("click", async () => {
+  const entrada = await obtenerEntradaPorId(3); 
 
-  let item_a_vender3_encontrado = carritoCompras.find((item) => item.nombre === entrada.nombre);
+  if (entrada instanceof Entrada) {
+    const index = carritoCompras.findIndex(item => item.id === entrada.id);
 
-  if (item_a_vender3_encontrado) {
-    for (let i = 0; i < carritoCompras.length; i++) {
-      if (carritoCompras[i].nombre === entrada.nombre) {
+    if (index !== -1) {
+      sumatotal -= carritoCompras[index].precio;
+      carritoCompras.splice(index, 1);
+      dinero.splice(index, 1); 
 
-        sumatotal -= carritoCompras[i].precio;
+      console.log("-1 " + entrada.nombre + "!");
 
+      let contadorElemento = document.getElementById("contador3");
+      let valorActual = parseInt(contadorElemento.innerHTML);
 
-        carritoCompras.splice(i, 1);
+      contadorC = isNaN(valorActual) ? 0 : valorActual;
+      contadorC--;
+      contadorElemento.innerHTML = contadorC;
 
-        console.log("-1 " + entrada.nombre + "!");
-
-
-        let contadorElemento = document.getElementById("contador3");
-        let valorActual = parseInt(contadorElemento.innerHTML);
-
-        contadorC = isNaN(valorActual) ? 0 : valorActual;
-        contadorC--;
-        contadorElemento.innerHTML = contadorC;
-        guardarEnLocalStorage();
-        return;
-      }
-    }
+      guardarEnLocalStorage();
+    } 
   }
 });
 //carrito
@@ -239,8 +235,8 @@ mostrar_carrito.addEventListener("click", () => {
   carritoCompras.forEach((entrada) => {
     console.log(entrada.nombre + " $ " + entrada.precio)
   })
-  document.getElementById('resumen_pago').textContent=('Total a pagar $'+sumatotal)
-  
+  setTimeout(() => { document.getElementById('resumen_pago').textContent = ('Total a pagar $' + sumatotal) }, 4000)
+
   /* let montoAPagar = prompt("Ingrese el monto a pagar:");
   if (parseFloat(montoAPagar) === sumatotal) {
     alert("Compra realizada");
